@@ -7,10 +7,11 @@ body{
     width:100%;
     margin:0;
     padding:0;
+    
 }
 
 #calcContainer{
-    height:70%;
+    height:75%;
     width:30%;
     background-color: gray;
     margin:auto;
@@ -18,7 +19,7 @@ body{
     position:relative;
     display:flex;
     flex-direction:column;
-    
+    border-radius: 4%;
 }
 
 #screen{
@@ -35,4 +36,15 @@ body{
     width:85%;
     background-color: aqua;
     margin:auto;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.calcButton{
+    height:20%;
+    width:20%;
+    margin: 0 2.5% 0 2.5%;
 }
