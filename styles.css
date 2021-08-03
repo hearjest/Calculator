@@ -1,0 +1,38 @@
+html{
+    height:100%;
+}
+body{
+    height:100%;
+    min-height:100%;
+    width:100%;
+    margin:0;
+    padding:0;
+}
+
+#calcContainer{
+    height:70%;
+    width:30%;
+    background-color: gray;
+    margin:auto;
+    top:20%;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    
+}
+
+#screen{
+    width:85%;
+    height:30%;
+    background-color: white;
+    margin:auto;
+    position:relative;
+    
+}
+
+#buttonsContainer{
+    height:60%;
+    width:85%;
+    background-color: aqua;
+    margin:auto;
+}
