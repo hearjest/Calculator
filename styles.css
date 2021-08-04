@@ -32,7 +32,7 @@ body{
 }
 
 #buttonsContainer{
-    height:60%;
+    height:50%;
     width:85%;
     background-color: inherit;
     margin:auto;
@@ -44,9 +44,14 @@ body{
 }
 
 #equals,.button{
-    height:20%;
+    height:15%;
     width:20%;
-    margin: 0 2.5% 0 2.5%;
+    margin: 0 2% 0 2%;
+}
+
+#delete,#clear{
+    width:40%;
+    height:100%;
 }
 
 
