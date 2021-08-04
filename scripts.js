@@ -8,16 +8,23 @@ let equation;
 let result;
 buttons.forEach((button)=>{
     button.addEventListener('click',function(){
-        screen.textContent+=button.textContent;
         if(button.textContent.charCodeAt(0)>=48&&button.textContent.charCodeAt(0)<=57){
             expression+=Number(button.textContent);
+            screen.textContent+=button.textContent;
         }else{
-            expression+=` ${button.textContent} `;
+            if(expression.charAt(expression.length-1)!==''&&expression.charAt(expression.length-1)!==' '){
+                expression+=` ${button.textContent} `;    
+                screen.textContent+=button.textContent;
+            }
+            
         }
     })
 });
 
 function calculate(){//An array length of 0 or an even array length are invalid
+    if(expression.charAt(expression.length-1)===''||expression.charAt(expression.length-1)===' '){
+        return;
+    }
     equation=expression.split(' ');
     result=Number(equation[0]);
     for(let i=1;i<equation.length;i+=2){
