@@ -18,14 +18,12 @@ buttons.forEach((button)=>{
     button.addEventListener('click',function(){
         if(button.textContent.charCodeAt(0)>=48&&button.textContent.charCodeAt(0)<=57){//Is a number
             expression+=Number(button.textContent);
-            screen.textContent+=button.textContent;
         }else{
             if(expression.charAt(expression.length-1)!==''&&expression.charAt(expression.length-1)!==' '){//If expression is empty or there is already an operator
                 expression+=` ${button.textContent} `;    
-                screen.textContent+=button.textContent;
             }
-            
         }
+        screen.textContent+=button.textContent;
     })
 });
 
@@ -64,5 +62,10 @@ function clear(){
 }
 
 function deleteThing(){
-
+    if(expression.charAt(expression.length-1)===' '){
+        expression=expression.slice(0,expression.length-1-2);
+    }else if(expression.charCodeAt(expression.length-1)>=48&&expression.charCodeAt(expression.length-1)<=57||expression.charAt(expression.length-1)==='.'){
+        expression=expression.slice(0,expression.length-1);
+    }
+    screen.textContent=expression;
 }
