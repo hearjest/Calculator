@@ -16,14 +16,18 @@ let result;
 
 buttons.forEach((button)=>{
     button.addEventListener('click',function(){
-        if(button.textContent.charCodeAt(0)>=48&&button.textContent.charCodeAt(0)<=57){//Is a number
-            expression+=Number(button.textContent);
-        }else{
-            if(expression.charAt(expression.length-1)!==''&&expression.charAt(expression.length-1)!==' '){//If expression is empty or there is already an operator
-                expression+=` ${button.textContent} `;    
+        let input=button.textContent;
+        if(input.charCodeAt(0)<47||input.charCodeAt(0)>57||input==='÷'){
+            if(input!=='.'&&operatorsNotRepeating()){
+                input=` ${input} `;
+            }else if(input==='.'&&(expression.charAt(expression.length-1)===''||expression.charAt(expression.length-1)===' ')){
+                input='0.'
+            }else if(expression.lastIndexOf('.')===expression.length-1||(expression.lastIndexOf('.')>-1&&expression.charCodeAt(expression.lastIndexOf('.')+1)>47)){
+                input='';
             }
         }
-        screen.textContent+=button.textContent;
+        expression+=input;
+        screen.textContent+=input;
     })
 });
 
@@ -51,6 +55,7 @@ function calculate(){//An array length of 0 or an even array length are invalid
         }
     }
     clear();
+    result=result.toFixed(2);
     screen.textContent=result;
     result='';//For when somebody presses clear before inputting
 }
@@ -69,3 +74,12 @@ function deleteThing(){
     }
     screen.textContent=expression;
 }
+
+function operatorsNotRepeating(){
+    if(
+    expression.charAt(expression.length-1)!==' '&&expression.charAt(expression.length-1)!==''){
+        return true;
+    }
+    return false;
+}
+
