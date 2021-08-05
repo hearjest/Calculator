@@ -18,12 +18,13 @@ buttons.forEach((button)=>{
     button.addEventListener('click',function(){
         let input=button.textContent;
         if(input.charCodeAt(0)<47||input.charCodeAt(0)>57||input==='÷'){
-            if(input!=='.'&&operatorsNotRepeating()){
+            if(input!=='.'&&operatorsNotRepeating()){//Check if operator will be placed next to a decimal or another operator
                 input=` ${input} `;
-            }else if(input==='.'&&(expression.charAt(expression.length-1)===''||expression.charAt(expression.length-1)===' ')){
+            }else if(input==='.'&&(expression.charAt(expression.length-1)===''||expression.charAt(expression.length-1)===' ')){//Check if only decimal is pressed
                 input='0.'
-            }else if(expression.lastIndexOf('.')===expression.length-1||(expression.lastIndexOf('.')>-1&&expression.charCodeAt(expression.lastIndexOf('.')+1)>47)){
-                input='';
+            }else if(expression.lastIndexOf('.')===expression.length-1||
+            (expression.lastIndexOf('.')>-1&&expression.charCodeAt(expression.lastIndexOf('.')+1)>47)&&expression.lastIndexOf(' ')<expression.lastIndexOf('.')){
+                input='';//Only one decimal per number seperated by operators
             }
         }
         expression+=input;
@@ -76,10 +77,7 @@ function deleteThing(){
 }
 
 function operatorsNotRepeating(){
-    if(
-    expression.charAt(expression.length-1)!==' '&&expression.charAt(expression.length-1)!==''){
-        return true;
-    }
-    return false;
+    
+    return expression.charAt(expression.length-1)!==' '&&expression.charAt(expression.length-1)!=='';
 }
 
